@@ -4,11 +4,12 @@
   "description": "",
   "main": "schema.js",
   "dependencies": {
+    "express": "^4.14.0",
+    "express-graphql": "^0.5.4",
     "faker": "^3.1.0",
     "graphql": "^0.7.2",
     "lodash": "^4.16.4",
     "md5": "^2.2.1",
-    "pathname-match": "^1.2.0",
     "uuid": "^2.0.3"
   },
   "devDependencies": {},
