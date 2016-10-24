@@ -12,6 +12,11 @@
 
 Go to `./schema.js` and complete it's TODO's.
 
+### Notes
+
+- start the server via `node index.js`
+- the 'database' is not persistent across re-starts, it will re-generate the fixtures each time. 
+
 ## Bonus round - dataLoaders
 
 __1.__ Add the following log line into Table.read in `db.js`
