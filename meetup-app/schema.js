@@ -9,7 +9,11 @@
 // 6. Verify both events and event(id: String) queries work in graphiql
 // 7. Add the the 'events' field to UserType and GroupType
 // 8. Verify both user.events and group.events queries
-// 9. TODO dataLoaders?
+
+// Extra: DataLoader
+// ------------------
+// 1. create a new instance of DataLoader, passing a function that accepts an array of keys
+// 2. The function should map the keys calling db.Users.read and promise.all
 
 
 const {

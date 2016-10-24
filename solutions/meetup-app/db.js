@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const uuid = require('uuid');
 const fixtures = require('./fixtures');
+const dataLoaderFixtures = require('./data-loader-fixtures');
 
 function Table({ name = 'TableName', initalState = {} }) {
   this.name = name
@@ -23,6 +24,9 @@ Table.prototype.read = function(args = {}) {
       if(!record) {
         return reject(new Error(`no record found with id: ${args.id}`));
       }
+
+      // dataLoaders log
+      // console.log(`${this.name} table read called: id -> ${args.id}`);
 
       return resolve(record);
     }
@@ -64,6 +68,7 @@ Table.prototype.delete = function(args = {}) {
 }
 
 module.exports = {
+  // for dataLoader eg, use dataLoaderFixtures instead
   Users: new Table({ name: 'users', initalState: fixtures.users }),
   Events: new Table({ name: 'events', initalState: fixtures.events }),
   Groups: new Table({ name: 'groups', initalState: fixtures.groups })

@@ -8,9 +8,15 @@ const {
   GraphQLNonNull,
   GraphQLBoolean
 } = require('graphql');
-const md5 = require('md5');
 
+const md5 = require('md5');
+const DataLoader = require('dataloader');
 const db = require('./db');
+
+const userLoader = new DataLoader(keys => {
+  const promises = keys.map(id => db.Users.read({ id }));
+  return Promise.all(promises);
+});
 
 const GravatarPic = new GraphQLObjectType({
   name: 'GravatarPicType',
@@ -81,10 +87,7 @@ const EventType = new GraphQLObjectType({
           defaultValue: 3
         }
       },
-      resolve: (eventRecord) => {
-        const promises = eventRecord.attendees.map(id => db.Users.read({ id }));
-        return Promise.all(promises);
-      }
+      resolve: (eventRecord) => userLoader.loadMany(eventRecord.attendees)
     },
     attendeeCount: {
       type: GraphQLInt,
@@ -113,10 +116,7 @@ const GroupType = new GraphQLObjectType({
           defaultValue: 3
         }
       },
-      resolve: (groupRecord) => {
-        const promises = groupRecord.members.map(id => db.Users.read({ id }));
-        return Promise.all(promises);
-      }
+      resolve: (groupRecord) => userLoader.loadMany(groupRecord.members)
     },
     events: {
       type: new GraphQLList(EventType),
@@ -137,7 +137,7 @@ const QueryType = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (obj, args, ctx) => db.Users.read(args)
+      resolve: (obj, args, ctx) => userLoader.load(args.id)
     },
     users: {
       type: new GraphQLList(UserType),
@@ -147,7 +147,7 @@ const QueryType = new GraphQLObjectType({
           defaultValue: 3
         }
       },
-      resolve: (obj, args, ctx) => db.Users.read(args)
+      resolve: (obj, args, ctx) => db.Users.read(args) // userLoader?
     },
     event: {
       type: EventType,
