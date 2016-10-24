@@ -51,7 +51,7 @@ const fakeEvents = _.times(10, (index) => {
     groupId: group.id,
     // each group will have 2 events, one past and one future
     date: (index % 2) === 0 ? faker.date.past() : faker.date.future(),
-    location: `${group.location}: ${faker.company.companyName}`,
+    location: `${group.location}: ${faker.company.companyName()}`,
     title: faker.company.catchPhrase(),
     description: faker.hacker.phrase(),
     // 2 users per event
