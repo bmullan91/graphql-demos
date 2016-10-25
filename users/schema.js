@@ -1,34 +1,54 @@
-// TODO
-// -----
-// 1. add 'user' to the RootQuery fields: type, args, resolve method
-// 2. create the UserType: instance of GraphQLObjectType - name description, fields
-// 3. add basic scalar values: id, firstName, lastName, email
-// 4. add 'users' to the RootQuery: type, resolve method
-// 5. verify users query works
-// 6. verify user query works against user id: copy one from the prev users query
-// 7. query for two separate users renaming them using aliases
-// 8. add the 'user_create' mutation
-// 9. profilePic field on UserType - new type GravatarPicType, url field.. resolve on user.
-// 10. Demo Operation Name getUser($id: String!)...
-
-// Notes:
-// ------
-// - Gravatar url `https://www.gravatar.com/avatar/${md5(userRecord.email)}?s=${args.size}`
-
 const {
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLList,
+  GraphQLInt
 } = require('graphql');
+
+const db = require('./db');
+
+// TODO #1
+// -------
+// Assign UserType to be an instance of GraphQLObjectType with the following keys:
+// name: String - UserType
+// description: [String] - describe the type
+// fields: Object - user fields (id, email, firstName, lastName) : GraphQLString
+const UserType;
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   description: '..',
   fields: {
-    // TODO
+    user: {
+      type: UserType,
+      // id: GraphQLString!
+      args: {},
+      // call db.Users.read passing the id argument
+      resolve: (rootObj, args, ctx) => {}
+    }
   }
 });
 
+
+// TODO #2
+// -------
+// A 'mutation' in graphql has the _exact_ same format as a query!
+// Queries should be idempotent - where as mutation is a place where
+// we list a the possible muatation _actions_ ... similar to flux actions
+const RootMutation = new GraphQLObjectType({
+  name: 'RootMutation',
+  description: 'mutation actions',
+  fields: {
+    // TODO user_create: {type, args, resolve}
+  }
+});
+
+// NOTE
+// ----
+// We've included the RootMutation into the schema
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: RootMutation
 });
