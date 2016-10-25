@@ -4,7 +4,9 @@
 
 __1.__ The following query:
 ```
-curl -XPOST -H "Content-Type:application/graphql" -d "query { hello }" localhost:8000/graphql
+curl -XPOST localhost:8000/graphql \
+ -H "Content-Type:application/graphql" \
+ -d "query { hello }"
 ```
 
 should return:
@@ -20,7 +22,9 @@ should return:
 __2.__ The query `hello` should accept a `name` parameter of type `GraphQLString` and respond with `hello world ${name}!`
 
 ```
-curl -XPOST -H "Content-Type:application/graphql" -d "query { hello(name:\"Brian\") }" localhost:8000/graphql
+curl -XPOST localhost:8000/graphql \
+ -H "Content-Type:application/graphql" \
+ -d "query { hello(name: \"Brian\") }"
 ```
 Should return
 
