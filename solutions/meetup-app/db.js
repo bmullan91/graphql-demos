@@ -1,7 +1,6 @@
 const _ = require('lodash');
 const uuid = require('uuid');
-const fixtures = require('./fixtures');
-const dataLoaderFixtures = require('./data-loader-fixtures');
+const fixtures = require('./fixtures'); // or 'data-loader-fixtures'
 
 function Table({ name = 'TableName', initalState = {} }) {
   this.name = name
@@ -68,7 +67,6 @@ Table.prototype.delete = function(args = {}) {
 }
 
 module.exports = {
-  // for dataLoader eg, use dataLoaderFixtures instead
   Users: new Table({ name: 'users', initalState: fixtures.users }),
   Events: new Table({ name: 'events', initalState: fixtures.events }),
   Groups: new Table({ name: 'groups', initalState: fixtures.groups })
