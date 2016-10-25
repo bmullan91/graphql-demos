@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const uuid = require('uuid');
 const fixtures = require('./fixtures');
 
 function Table({ name = 'TableName', initalState = {} }) {
@@ -9,7 +8,7 @@ function Table({ name = 'TableName', initalState = {} }) {
 
 Table.prototype.create = function(args = {}) {
   return new Promise((resolve, reject) => {
-    const id = uuid();
+    const id = Object.keys(this._store).length + 1;
     const newRecord = Object.assign({ id }, args);
     this._store[id] = newRecord;
     resolve(newRecord);

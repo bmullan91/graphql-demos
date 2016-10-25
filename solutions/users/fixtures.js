@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const uuid = require('uuid');
 const faker = require('faker');
 
 const fakeUsers = _.times(20, (index) => ({
