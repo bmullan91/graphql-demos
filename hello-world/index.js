@@ -4,9 +4,12 @@ const app = express();
 
 // TODO
 // -----
-// 1. verify homepage route works
-// 2. include the expressGraphql middleware, passing it the schema object
-// 3. create the schema.js file and require it
+// 1. include the expressGraphql middleware, passing it an object with the schema as a key/value
+// 2. create the schema.js
+
+const schema = require('./schema');
+
+app.use('/graphql', /* #1 */);
 
 app.get('/', (req, res) => res.end('homepage'));
 
