@@ -1,4 +1,5 @@
 const md5 = require('md5');
+const db = require('./db');
 
 
 // NOTE
@@ -6,8 +7,6 @@ const md5 = require('md5');
 // we're using makeExecutableSchema instead of `buildSchema`
 // this supports a more flexible way to define resolvers
 const { makeExecutableSchema } = require('graphql-tools');
-
-const db = require('./db');
 
 const typeDefs = `
   type User {
@@ -41,11 +40,6 @@ const resolvers = {
     user_create: (root, args) => db.Users.create(args)
   },
   User: {
-    // NOTE
-    // ----
-    // This is a derived field, it's not actually on the user model
-    // but like any field - it's just a function
-    // we can add abriatary code in it's resolve function
     profilePic: (user, { size }) => ({
       url: `https://www.gravatar.com/avatar/${md5(user.email)}?s=${size}`
     })
