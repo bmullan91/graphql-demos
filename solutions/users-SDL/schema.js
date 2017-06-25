@@ -45,7 +45,7 @@ const resolvers = {
     // ----
     // This is a derived field, it's not actually on the user model
     // but like any field - it's just a function
-    // we can add abriatary in our resolve function
+    // we can add abriatary code in it's resolve function
     profilePic: (user, { size }) => ({
       url: `https://www.gravatar.com/avatar/${md5(user.email)}?s=${size}`
     })
@@ -54,5 +54,5 @@ const resolvers = {
 
 module.exports = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers
 });
