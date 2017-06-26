@@ -49,6 +49,8 @@ const resolvers = {
     // but like any field - it's just a function
     // we can add abriatary code in it's resolve function
     // gravatar.com images are identified by the users email, hashed by md5
+    // https://www.gravatar.com/avatar/${md5(user.email)}?s=${size}
+    // remember its an object we're expecting with a url prop
   }
 };
 
