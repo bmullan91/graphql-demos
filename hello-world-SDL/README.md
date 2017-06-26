@@ -48,3 +48,4 @@ Go to `./index.js` and `./schema.js` and complete it's TODO's.
 ### Notes
 
 - start the server via `node index.js`
+- [launchpad code](https://launchpad.graphql.com/rxj1z35jn)
