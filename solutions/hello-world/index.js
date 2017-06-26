@@ -7,7 +7,7 @@ const app = express();
 
 app.use('/graphql', expressGraphql({
   schema,
-  pretty: true
+  graphiql: true
 }));
 
 app.get('/', (req, res) => res.end('homepage'));
