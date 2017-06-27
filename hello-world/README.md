@@ -42,14 +42,6 @@ Should return
 }
 ```
 
-__4.__ Send the query as JSON + variables
-
-```
-curl -XPOST 'localhost:8000/graphql' \
- -H 'Content-Type:application/json' \
- -d '{"query":"query withName($name: String) {hello(name: $name)}","variables":{"name":"Brian"}}'
-```
-
 ## Challenges
 
 Go to `./index.js` and `./schema.js` and complete it's TODO's.
