@@ -13,7 +13,6 @@ Most applications have users, right?
 
 1. I've created a fake database, with basic crud operations that return promises: see `db.js`
 2. I've created fake user data: see `fixtures.js`
-3. `/graphiql` route added to middleware
 
 ## Challenges
 
