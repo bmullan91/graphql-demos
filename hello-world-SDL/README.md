@@ -4,6 +4,12 @@
 
 ## Goals
 
+1. Use express and the GraphQL middleware to start the server
+2. Define our schema and pass it to the middleware
+3. See if it works by issuing various types of requests
+
+### Verification Requests
+
 __1.__ The following query:
 ```
 curl -XPOST 'localhost:8000/graphql' \
@@ -42,14 +48,6 @@ Should return
     "hello": "hello world Brian!"
   }
 }
-```
-
-__4.__ Send the query as JSON + variables
-
-```
-curl -XPOST 'localhost:8000/graphql' \
- -H 'Content-Type:application/json' \
- -d '{"query":"query withName($name: String) {hello(name: $name)}","variables":{"name":"Brian"}}'
 ```
 
 ## Challenges

@@ -2,6 +2,12 @@
 
 ## Goals
 
+1. Use express and the GraphQL middleware to start the server
+2. Define our schema and pass it to the middleware
+3. See if it works by issuing various types of requests
+
+### Verification Requests
+
 __1.__ The following query:
 ```
 curl -XPOST 'localhost:8000/graphql' \
