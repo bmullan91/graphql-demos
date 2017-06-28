@@ -42,10 +42,10 @@ query {
 
 __fragments__
 
-A basic composition primitive within graph.
+A basic composition primitive within graphql.
 
 ```
-fragment UserFragment on UserType {
+fragment UserFragment on User {
   firstName
   lastName
   email
@@ -66,7 +66,7 @@ __query operation name + variables__
 This avoids manual string interpolation to construct queries
 
 ```
-query FetchUser($id: String!) {
+query FetchUser($id: ID!) {
   user(id: $id) {
     firstName
     lastName
@@ -87,7 +87,7 @@ __directives__
 example:
 
 ```
-query FetchUser($id: String!, $includeEmail: Boolean!) {
+query FetchUser($id: ID!, $includeEmail: Boolean!) {
   user(id: $id) {
     firstName
     lastName
